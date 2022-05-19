@@ -1,0 +1,38 @@
+POST http://localhost:9999/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test1",
+  "password": "test1",
+  "email": "test1@gmail.com",
+  "name": "test1"
+}
+
+###
+
+POST http://localhost:9999/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin"
+}
+
+###
+
+GET http://localhost:9999/api/auth/default
+
+###
+
+GET http://localhost:9999/api/items
+Authorization: Test eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTg4N2ZlOWIwYTZjNGY4ODdhMWEyZDQiLCJpYXQiOjE2MzYzNDI2ODB9.n9hPWZlRsiI_8HgvdPI4Kpy7Oj-jyVwYXtdccrAdOr4
+
+###
+
+POST http://localhost:9999/api/trademark/create
+Content-Type: application/json
+
+{
+  "name": "zxczxc",
+  "description": "asdasd",
+}

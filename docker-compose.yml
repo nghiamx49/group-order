@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  client:
+    container_name: client
+    stdin_open: true
+    build:
+      dockerfile: Dockerfile
+      context: ./client
+    ports:
+      - "80:80"
+    depends_on:
+      - server
+  server:
+    container_name: server
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./server
+    environment:
+      - DEV_URL=mongodb://mongo:27017/fina_project
+      - MGDB_USERNAME=project
+      - MGDB_PASSWORD=project
+      - ACCESS_TOKEN_SECRET=lansd23zxcz5dasd2asd5xcvxc1vx
+      - PORT=8080
+      - ADMIN=ADMIN
+      - CUSTOMER=CUSTOMER
+      - MANAGER=MANAGER
+      - SECRET_KEY=huynbt
+      - NOTCHECK='Not Checkout'
+      - INPROCESS='In Progress'
+      - SHIPPING='Shipping'
+      - COMPLETED='Completed'
+    ports:
+      - "8080:80"
+    depends_on:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - 27017:27017
+volumes:
+  mongodb:
